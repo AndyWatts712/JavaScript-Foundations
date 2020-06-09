@@ -73,29 +73,6 @@ Then, add control flow within your function such that IF creditScore is above 74
 Hint: To drop an interest rate by 5% you can take monthlyRate and multiply it by 0.95. Similarly, to increase an interest rate by 5% you'd do monthlyRate * 1.05.
 */
 
-let name = "Andy";
-
-function mortgageCalculator(P, I, N, creditScore) {
-    let monthlyInterestRate = I / 12;
-    let periods = N * 12;
-
-    let n1 = Math.pow((1 + monthlyInterestRate), periods);
-    let n2 = n1 * monthlyInterestRate;
-    let numerator = n2;
-    let denominator = n1 - 1;
-    let monthlyRate = (numerator / denominator);
-    let payment = P * monthlyRate;
-
-    if (creditScore > 740) {
-        payment = payment * .95;
-    } else if (creditScore < 660) {
-        payment = payment * 1.05;
-    }
-
-    return console.log(name + ", your monthly rate is $" + payment);
-}
-
-mortgageCalculator(200000, .05, 30, 650);
 
 
 // 🏡 Task 6: Loops
@@ -113,6 +90,38 @@ For example, variableInterestRate(200000, 0.04, 30) should console.log:
 "{Name}, with an interest rate of 0.055, your monthly rate is $1136"
 "{Name}, with an interest rate of 0.06, your monthly rate is $1199"
 */
+
+let name = "Andy";
+
+function variableInterestRate(P, I, N, creditScore) {
+    I = I - .02
+    for (i = 0; i < 9; i++) {
+        let monthlyInterestRate = I / 12;
+        let periods = N * 12;
+
+        let n1 = Math.pow((1 + monthlyInterestRate), periods);
+        let n2 = n1 * monthlyInterestRate;
+        let numerator = n2;
+        let denominator = n1 - 1;
+        let monthlyRate = (numerator / denominator);
+        let payment = P * monthlyRate;
+
+        if (creditScore > 740) {
+            payment = payment * .95;
+        } else if (creditScore < 660) {
+            payment = payment * 1.05;
+        }
+
+        console.log(name + ", with an interest rate of " + I.toFixed(3) + ", your monthly rate is $" + payment.toFixed(2));
+        
+        I = I + .005;
+    }
+}
+variableInterestRate(200000, .05, 30, 600)
+
+
+
+
 
 
 
