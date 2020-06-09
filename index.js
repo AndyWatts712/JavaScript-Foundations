@@ -117,13 +117,6 @@ function variableInterestRate(P, I, N, creditScore) {
         I = I + .005;
     }
 }
-variableInterestRate(200000, .05, 30, 600)
-
-
-
-
-
-
 
 
 // 🌟🌟🌟 STRETCH 🌟🌟🌟//
@@ -137,6 +130,12 @@ variableInterestRate(200000, .05, 30, 600)
 
 
 /* 🏡 Explore using `window.prompt()` to allow a user to input parameters in the browser */
+const P = Number(window.prompt("Enter the amount to be borrowed.", ""));
+const I = Number(window.prompt("Enter the annual interest rate.", ""));
+const N = Number(window.prompt("Enter payback time in years.", ""));
+const creditScore = Number(window.prompt("Enter your credit score.", ""));
+
+variableInterestRate(P, I, N, creditScore);
 
 
 /* 🏡  Refactor your `variableInterestRate()` function to accept an array of interest rates (make sure to copy and paste as to not lose your work!) */
