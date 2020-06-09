@@ -91,32 +91,7 @@ For example, variableInterestRate(200000, 0.04, 30) should console.log:
 "{Name}, with an interest rate of 0.06, your monthly rate is $1199"
 */
 
-let name = "Andy";
 
-function variableInterestRate(P, I, N, creditScore) {
-    I = I - .02
-    for (i = 0; i < 9; i++) {
-        let monthlyInterestRate = I / 12;
-        let periods = N * 12;
-
-        let n1 = Math.pow((1 + monthlyInterestRate), periods);
-        let n2 = n1 * monthlyInterestRate;
-        let numerator = n2;
-        let denominator = n1 - 1;
-        let monthlyRate = (numerator / denominator);
-        let payment = P * monthlyRate;
-
-        if (creditScore > 740) {
-            payment = payment * .95;
-        } else if (creditScore < 660) {
-            payment = payment * 1.05;
-        }
-
-        console.log(name + ", with an interest rate of " + I.toFixed(3) + ", your monthly rate is $" + payment.toFixed(2));
-        
-        I = I + .005;
-    }
-}
 
 
 // 🌟🌟🌟 STRETCH 🌟🌟🌟//
@@ -126,16 +101,45 @@ function variableInterestRate(P, I, N, creditScore) {
 /*  🏡 Add  `Property Tax`, `Homeowner's insurance` and `HOA fees` as parameters in your function to calculate total monthly spending on housing */
 
 
+
+
 /* 🏡 Build a calculator function that accepts `monthly payment` and `interest rate` and returns the maximum loan that a person could afford */
 
 
 /* 🏡 Explore using `window.prompt()` to allow a user to input parameters in the browser */
-const P = Number(window.prompt("Enter the amount to be borrowed.", ""));
-const I = Number(window.prompt("Enter the annual interest rate.", ""));
-const N = Number(window.prompt("Enter payback time in years.", ""));
-const creditScore = Number(window.prompt("Enter your credit score.", ""));
+// const P = Number(window.prompt("Enter the amount to be borrowed.", ""));
+// const I = Number(window.prompt("Enter the annual interest rate.", ""));
+// const N = Number(window.prompt("Enter payback time in years.", ""));
+// const creditScore = Number(window.prompt("Enter your credit score.", ""));
 
-variableInterestRate(P, I, N, creditScore);
+// variableInterestRate(P, I, N, creditScore);
 
 
 /* 🏡  Refactor your `variableInterestRate()` function to accept an array of interest rates (make sure to copy and paste as to not lose your work!) */
+let name = "Andy";
+
+variableInterestRate(200000, [.05, .04, .03, .02], 30, 800);
+
+function variableInterestRate(P, I, N, creditScore) {
+    
+    for (i = 0; i < I.length; i++) {
+        let monthlyInterestRate = I[i] / 12;
+        let periods = N * 12;
+
+        let n1 = Math.pow((1 + monthlyInterestRate), periods);
+        let n2 = n1 * monthlyInterestRate;
+        let numerator = n2;
+        let denominator = n1 - 1;
+        let monthlyRate = (numerator / denominator);
+        let payment = P * monthlyRate;
+
+        // if (creditScore > 740) {
+        //     payment = payment * .95;
+        // } else if (creditScore < 660) {
+        //     payment = payment * 1.05;
+        // }
+
+        console.log(name + ", with an interest rate of " + I[i] + ", your monthly rate is $" + payment.toFixed(2));
+        
+    }
+}
