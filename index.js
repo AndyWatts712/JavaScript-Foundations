@@ -18,7 +18,18 @@
 (1) Create a variable called `monthlyInterestRate` and give it the value of interest rate divided by 12. 
 (2) Create another variable called `periods` and give it the value of years*12.
 */
+let name = "Andy"
 
+function monthlyPayment(Principal, I, years) {
+    const monthlyInterestRate = I / 12;
+    const periods = years * 12;
+
+    monthlyPayment = Principal * ((monthlyInterestRate * Math.pow((1 + monthlyInterestRate), periods)) / (Math.pow((1 + monthlyInterestRate), periods) - 1));
+
+    console.log(name + ", your monthly payment is $" + monthlyPayment.toFixed(2) + ".");
+}
+
+monthlyPayment(200000, .05, 30);
 
 
 // 🏡 Task 2: Harder Math
@@ -99,33 +110,27 @@ For example, variableInterestRate(200000, 0.04, 30) should console.log:
 /* Attempt any of the stretch goals below once you have finished the work above. Remember as always, these may require additional research beyond what you learned today */
 
 /*  🏡 Add  `Property Tax`, `Homeowner's insurance` and `HOA fees` as parameters in your function to calculate total monthly spending on housing */
-const name = "Andy";
+// const name = "Andy";
 
-monthlyExpenses(200000, .05, 30, 800, 300, 50, 150);
+// maxLoan(1000, .05);
 
-function monthlyExpenses(P, I, N, creditScore, propertyTax, insurance, hoaFees) {
+// function maxLoan(payment, I) {
 
 
-    let monthlyInterestRate = I / 12;
-    let periods = N * 12;
+//     let monthlyInterestRate = I / 12;
+//     let periods = 360;
 
-    let n1 = Math.pow((1 + monthlyInterestRate), periods);
-    let n2 = n1 * monthlyInterestRate;
-    let numerator = n2;
-    let denominator = n1 - 1;
-    let monthlyRate = (numerator / denominator);
-    let payment = P * monthlyRate;
+//     let n1 = Math.pow((1 + monthlyInterestRate), periods);
+//     let n2 = n1 * monthlyInterestRate;
+//     let numerator = n2;
+//     let denominator = n1 - 1;
+//     let monthlyRate = (numerator / denominator);
+//     let P = monthlyRate / payment;
 
-    if (creditScore > 740) {
-        payment = payment * .95;
-    } else if (creditScore < 660) {
-        payment = payment * 1.05;
-    }
-    let total = payment + propertyTax + insurance + hoaFees
+//     console.log(name + ", with a monthly payment of " + payment + ", at an interest rate of " + I + " your max loan is $" + P.toFixed(2));
 
-    console.log(name + ", with an interest rate of " + I + ", your monthly expenses are $" + total.toFixed(2));
-
-}
+//     console.log(P, monthlyRate, n1, n2)
+// }
 
 
 
